@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const initialState = { product: [], loading: true };
+const initialState = { product: [], loading: true, current: {} };
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
@@ -13,7 +13,7 @@ export const fetchProducts = createAsyncThunk(
 );
 
 export const appendProduct = createAsyncThunk(
-  "/api/appendProduct",
+  "products/appendProduct",
   async (payload) => {
     const res = await axios.post("/api/product", payload, {
       headers: {
@@ -21,6 +21,15 @@ export const appendProduct = createAsyncThunk(
       },
     });
     return res.data.payload;
+  }
+);
+
+export const getSpecificProduct = createAsyncThunk(
+  "products/getSpecificProduct",
+  async (id) => {
+    console.log(`in func ${id}`);
+    const prod = await axios.get(`/api/product/${id}`);
+    return prod.data.payload;
   }
 );
 
@@ -37,9 +46,11 @@ const productSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(appendProduct.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.product = [];
       state.loading = false;
+    });
+    builder.addCase(getSpecificProduct.fulfilled, (state, action) => {
+      state.current = action.payload;
     });
   },
 });

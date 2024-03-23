@@ -25,6 +25,7 @@ function Allproducts() {
         image={p.image}
         category={p.category}
         price={p.price}
+        id={p._id}
       ></Product>
     );
   });

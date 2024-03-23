@@ -1,9 +1,21 @@
 .productform{
-    height: 60%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.form{
+    border: 2px solid wheat;
+    height: 80%;
     width: 40%;
     border: 2px solid white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center;
 
 }
+
+

@@ -5,7 +5,6 @@ import app from "./app.js";
 import connect from "./db/connect.js";
 
 const PORT = process.env.PORT || 8000;
-console.log(process.env.API_KEY);
 
 connect();
 
