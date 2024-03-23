@@ -1,6 +1,8 @@
 import Product from "../models/Product.js";
 import ApiError from "../utils/apiError.js";
 import ApiResponse from "../utils/apiResponse.js";
+import uploadToCloudinary from "../utils/cloudinary.js";
+import * as fs from "fs";
 
 async function getProduct(req, res) {
   const products = await Product.find();
@@ -9,9 +11,15 @@ async function getProduct(req, res) {
 
 async function addProduct(req, res) {
   //check if name ,price atc are present in req.body
-  const { name, price, category, image } = req.body;
+  const path = req.file.path;
+
+  const { name, price, category } = req.body;
+
+  const image = await uploadToCloudinary(path);
+
   const newProduct = new Product({ name, price, category, image });
   const response = await newProduct.save();
+  fs.unlinkSync(path);
 
   res.status(200).json(new ApiResponse(response, "product added", 200));
 }

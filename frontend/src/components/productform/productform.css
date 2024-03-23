@@ -1,0 +1,9 @@
+.productform{
+    height: 60%;
+    width: 40%;
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}

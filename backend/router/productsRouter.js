@@ -1,4 +1,8 @@
 import express from "express";
+// import multer from "multer";
+
+// const upload = multer({ dest: "../uploads" });
+import { upload } from "../middleware/multer.js";
 import {
   addProduct,
   deleteProduct,
@@ -12,7 +16,7 @@ const productRouter = express.Router();
 productRouter
   .route("/")
   .get(asyncHandler(getProduct))
-  .post(asyncHandler(addProduct));
+  .post(upload.single("image"), asyncHandler(addProduct));
 
 productRouter
   .route("/:id")

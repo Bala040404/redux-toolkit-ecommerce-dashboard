@@ -1,0 +1,42 @@
+.navbar {
+    height: 80px;
+    background-color: black;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+.brand{
+    color: rgb(0, 106, 255);
+    
+    margin-right:450px;
+}
+
+.lnks {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+    transition: color 1s cubic-bezier(1, 2, 1, 0);
+}
+
+.lnks:hover {
+    color: rgba(0, 132, 255, 0.7);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0.5em 0.5em -0.4em rgb(0, 119, 255)
+}
+
+.active {
+    color: rgb(0, 68, 255);
+}
+
+.logo {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    position: fixed;
+    left: 0;
+    margin-left: 10px;
+
+}
