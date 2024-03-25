@@ -7,6 +7,7 @@ import {
   deleteSpecificProduct,
 } from "../../slices/ProductSlice";
 import "./individualproduct.css";
+import { addTocart } from "../../slices/CartSlice";
 function Induvidualproduct() {
   const reroute = useNavigate();
   const { id } = useParams();
@@ -26,6 +27,9 @@ function Induvidualproduct() {
     reroute("/");
   }
 
+  function addProdToCart() {
+    dispatch(addTocart(product));
+  }
   return (
     <div className="individualproduct">
       <div className="image">
@@ -36,6 +40,7 @@ function Induvidualproduct() {
         <h2>{product.price}</h2>
         <h3>{product.category}</h3>
         <button onClick={deleteProd}>delete</button>
+        <button onClick={addProdToCart}>add to cart </button>
       </div>
     </div>
   );

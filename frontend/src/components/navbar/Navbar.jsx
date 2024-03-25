@@ -16,6 +16,9 @@ function Navbar() {
       <NavLink className="lnks" to="/addproducts">
         Addproduct
       </NavLink>
+      <NavLink className="lnks" to="/cart">
+        Cart
+      </NavLink>
     </nav>
   );
 }
