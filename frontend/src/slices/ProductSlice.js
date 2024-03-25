@@ -27,8 +27,15 @@ export const appendProduct = createAsyncThunk(
 export const getSpecificProduct = createAsyncThunk(
   "products/getSpecificProduct",
   async (id) => {
-    console.log(`in func ${id}`);
     const prod = await axios.get(`/api/product/${id}`);
+    return prod.data.payload;
+  }
+);
+
+export const deleteSpecificProduct = createAsyncThunk(
+  "products/deleteSpecificProduct",
+  async (id) => {
+    const prod = await axios.delete(`/api/product/${id}`);
     return prod.data.payload;
   }
 );
@@ -50,6 +57,9 @@ const productSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(getSpecificProduct.fulfilled, (state, action) => {
+      state.current = action.payload;
+    });
+    builder.addCase(deleteSpecificProduct.fulfilled, (state, action) => {
       state.current = action.payload;
     });
   },

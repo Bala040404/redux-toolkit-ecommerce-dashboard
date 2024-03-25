@@ -1,22 +1,30 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getSpecificProduct } from "../../slices/ProductSlice";
+import {
+  getSpecificProduct,
+  deleteSpecificProduct,
+} from "../../slices/ProductSlice";
 import "./individualproduct.css";
 function Induvidualproduct() {
+  const reroute = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  function fetchProduct() {
-    console.log(id);
-    dispatch(getSpecificProduct(id));
-  }
   const product = useSelector((store) => {
     return store.products.current;
   });
 
   useEffect(fetchProduct, []);
+
+  function fetchProduct() {
+    dispatch(getSpecificProduct(id));
+  }
+  function deleteProd() {
+    dispatch(deleteSpecificProduct(id));
+    reroute("/");
+  }
 
   return (
     <div className="individualproduct">
@@ -27,6 +35,7 @@ function Induvidualproduct() {
         <h1>{product.name}</h1>
         <h2>{product.price}</h2>
         <h3>{product.category}</h3>
+        <button onClick={deleteProd}>delete</button>
       </div>
     </div>
   );
