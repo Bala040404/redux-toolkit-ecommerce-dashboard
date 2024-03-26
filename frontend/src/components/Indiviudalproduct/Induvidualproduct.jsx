@@ -17,6 +17,21 @@ function Induvidualproduct() {
     return store.products.current;
   });
 
+  const cartItems = useSelector((store) => {
+    return store.cart.cartItems;
+  });
+
+  function getCartCount(id) {
+    const foundProduct = cartItems.find((product) => {
+      return product._id === id;
+    });
+
+    if (foundProduct) {
+      return foundProduct.count;
+    } else {
+      return 0;
+    }
+  }
   useEffect(fetchProduct, []);
 
   function fetchProduct() {
@@ -29,6 +44,7 @@ function Induvidualproduct() {
 
   function addProdToCart() {
     dispatch(addTocart(product));
+    reroute("/cart");
   }
   return (
     <div className="individualproduct">
@@ -40,7 +56,9 @@ function Induvidualproduct() {
         <h2>{product.price}</h2>
         <h3>{product.category}</h3>
         <button onClick={deleteProd}>delete</button>
-        <button onClick={addProdToCart}>add to cart </button>
+        <button onClick={addProdToCart}>
+          add to cart {getCartCount(product._id)}{" "}
+        </button>
       </div>
     </div>
   );
