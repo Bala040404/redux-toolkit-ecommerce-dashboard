@@ -10,6 +10,9 @@ function Cart() {
     return store.cart.count;
   });
 
+  const total = useSelector((store) => {
+    return store.cart.total;
+  });
   const cartProducts = prods.map((p) => {
     return (
       <Cartproduct
@@ -26,7 +29,9 @@ function Cart() {
   });
   return (
     <div>
-      <h1>The number of products in the cart is {count} </h1>
+      <h1>
+        The number of products in the cart is {count} and the cost is {total}{" "}
+      </h1>
       <div>{cartProducts}</div>
     </div>
   );

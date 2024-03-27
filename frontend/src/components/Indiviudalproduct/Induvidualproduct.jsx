@@ -69,7 +69,7 @@ function Induvidualproduct() {
           <div className="cartCount">
             <button
               onClick={() => {
-                removeProductFromcart(id);
+                removeProductFromcart(product);
               }}
             >
               -

@@ -21,7 +21,7 @@ function Cartproduct({ image, name, category, price, id, count, prod }) {
       <div className="cartCount">
         <button
           onClick={() => {
-            removeProductFromcart(id);
+            removeProductFromcart(prod);
           }}
         >
           -
