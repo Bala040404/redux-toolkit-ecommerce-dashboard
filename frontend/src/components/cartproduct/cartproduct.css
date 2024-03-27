@@ -1,5 +1,5 @@
 .cartproduct{
-    height: 300px;
+    height: 360px;
     width: 270px;
     border: 2px solid white;
     margin-bottom: 15px;
@@ -17,3 +17,9 @@
 
 }
 
+.cartCount{
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    
+}

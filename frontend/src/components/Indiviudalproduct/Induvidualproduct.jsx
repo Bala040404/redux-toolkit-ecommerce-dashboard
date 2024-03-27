@@ -7,7 +7,7 @@ import {
   deleteSpecificProduct,
 } from "../../slices/ProductSlice";
 import "./individualproduct.css";
-import { addTocart } from "../../slices/CartSlice";
+import { addTocart, removeFromCart } from "../../slices/CartSlice";
 function Induvidualproduct() {
   const reroute = useNavigate();
   const { id } = useParams();
@@ -46,6 +46,11 @@ function Induvidualproduct() {
     dispatch(addTocart(product));
     reroute("/cart");
   }
+
+  function removeProductFromcart(id) {
+    dispatch(removeFromCart(id));
+    reroute("/cart");
+  }
   return (
     <div className="individualproduct">
       <div className="image">
@@ -56,9 +61,29 @@ function Induvidualproduct() {
         <h2>{product.price}</h2>
         <h3>{product.category}</h3>
         <button onClick={deleteProd}>delete</button>
-        <button onClick={addProdToCart}>
-          add to cart {getCartCount(product._id)}{" "}
-        </button>
+        {getCartCount(id) === 0 ? (
+          <button onClick={addProdToCart}>
+            add to cart {getCartCount(product._id)}{" "}
+          </button>
+        ) : (
+          <div className="cartCount">
+            <button
+              onClick={() => {
+                removeProductFromcart(id);
+              }}
+            >
+              -
+            </button>
+            <h3>{getCartCount(id)}</h3>
+            <button
+              onClick={() => {
+                addProdToCart;
+              }}
+            >
+              +
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -20,6 +20,7 @@ function Cart() {
         price={p.price}
         id={p._id}
         count={p.count}
+        prod={p}
       ></Cartproduct>
     );
   });
