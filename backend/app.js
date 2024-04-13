@@ -1,8 +1,8 @@
 import express from "express";
-
 import loger from "./middleware/loger.js";
 import productRouter from "./router/productsRouter.js";
 import ApiError from "./utils/apiError.js";
+import userRouter from "./router/userRouter.js";
 
 const app = express();
 
@@ -11,6 +11,7 @@ app.use(express.json());
 
 app.use(loger);
 app.use("/api/product", productRouter);
+app.use("/api/user", userRouter);
 
 app.use((err, req, res, next) => {
   const { status = 500 } = err;
