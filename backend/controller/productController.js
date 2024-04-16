@@ -1,3 +1,4 @@
+import { log } from "console";
 import Product from "../models/Product.js";
 import ApiError from "../utils/apiError.js";
 import ApiResponse from "../utils/apiResponse.js";
@@ -13,14 +14,13 @@ async function addProduct(req, res) {
   //check if name ,price atc are present in req.body
   const path = req.file.path;
 
-  const { name, price, category } = req.body;
+  const { name, price, category, user } = req.body;
 
   const image = await uploadToCloudinary(path);
 
-  const newProduct = new Product({ name, price, category, image });
+  const newProduct = new Product({ name, price, category, image, user });
   const response = await newProduct.save();
   fs.unlinkSync(path);
-
   res.status(200).json(new ApiResponse(response, "product added", 200));
 }
 

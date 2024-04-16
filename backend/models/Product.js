@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import User from "./User.js";
 
 const productSchema = new mongoose.Schema({
   name: {
@@ -15,6 +16,11 @@ const productSchema = new mongoose.Schema({
   },
   image: {
     type: String,
+    required: true,
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: User,
     required: true,
   },
 });

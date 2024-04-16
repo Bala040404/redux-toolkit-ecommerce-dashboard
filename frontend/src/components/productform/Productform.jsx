@@ -1,16 +1,21 @@
 import React from "react";
 import { useState } from "react";
 import { fetchProducts, appendProduct } from "../../slices/ProductSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./productform.css";
+import { useNavigate } from "react-router-dom";
+
 function Productform() {
+  const nav = useNavigate();
   const [product, setProduct] = useState({
     name: "",
     category: "",
     price: "",
     image: null,
   });
-
+  const user = useSelector((store) => {
+    return store.user.user;
+  });
   const dispatch = useDispatch();
 
   async function addproduct(e) {
@@ -20,9 +25,11 @@ function Productform() {
     f.append("category", product.category);
     f.append("price", product.price);
     f.append("image", product.image);
+    f.append("user", user._id);
 
     await dispatch(appendProduct(f));
-    dispatch(fetchProducts());
+    nav("/");
+    // dispatch(fetchProducts());
   }
   return (
     <div className="productform">

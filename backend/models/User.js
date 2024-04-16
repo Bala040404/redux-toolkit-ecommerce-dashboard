@@ -19,7 +19,14 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    methods: {
+      hello() {
+        console.log("hello");
+      },
+    },
+  }
 );
 userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, 10);

@@ -16,6 +16,19 @@ function Navbar() {
       <NavLink className="lnks" to="/addproducts">
         Addproduct
       </NavLink>
+
+      <NavLink className="lnks" to="/login">
+        Login
+      </NavLink>
+
+      <NavLink className="lnks" to="/logout">
+        Logout
+      </NavLink>
+
+      <NavLink className="lnks" to="/register">
+        Register
+      </NavLink>
+
       <NavLink className="lnks" to="/cart">
         Cart
       </NavLink>
