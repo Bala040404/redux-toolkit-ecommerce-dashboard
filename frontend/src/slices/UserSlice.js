@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  user: {},
+  user: "",
 };
 
 export const login = createAsyncThunk("userslice/login", async (data) => {
@@ -19,18 +19,28 @@ export const register = createAsyncThunk("userslice/register", async (data) => {
 const userslice = createSlice({
   name: "userslice",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    logout: (state, action) => {
+      state.user = "";
+    },
+  },
 
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
-      state.user = action.payload;
+      state.user = action.payload.accessToken;
+      localStorage.setItem("accesstoken", action.payload.accessToken);
+      localStorage.setItem("id", action.payload.id);
+
+      console.log(action.payload);
     });
 
     builder.addCase(register.fulfilled, (state, action) => {
-      state.user = action.payload;
+      state.user = action.payload.accessToken;
+      localStorage.setItem("accesstoken", action.payload.accessToken);
+      localStorage.setItem("id", action.payload.id);
     });
   },
 });
 
-export const { increment } = userslice.actions;
+export const { logout } = userslice.actions;
 export default userslice.reducer;

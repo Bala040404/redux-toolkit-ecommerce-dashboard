@@ -1,8 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./navbar.css";
-
+import { useSelector } from "react-redux";
 function Navbar() {
+  const isAuthenticated =
+    useSelector((store) => {
+      return store.user.user;
+    }) !== "";
   return (
     <nav className="navbar">
       <img
@@ -13,17 +17,22 @@ function Navbar() {
       <NavLink className="lnks" to="/">
         Home
       </NavLink>
-      <NavLink className="lnks" to="/addproducts">
-        Addproduct
-      </NavLink>
+
+      {isAuthenticated && (
+        <NavLink className="lnks" to="/addproducts">
+          Addproduct
+        </NavLink>
+      )}
 
       <NavLink className="lnks" to="/login">
         Login
       </NavLink>
 
-      <NavLink className="lnks" to="/logout">
-        Logout
-      </NavLink>
+      {isAuthenticated && (
+        <NavLink className="lnks" to="/logout">
+          Logout
+        </NavLink>
+      )}
 
       <NavLink className="lnks" to="/register">
         Register

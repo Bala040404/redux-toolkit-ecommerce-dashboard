@@ -60,7 +60,9 @@ function Induvidualproduct() {
         <h1>{product.name}</h1>
         <h2>{product.price}</h2>
         <h3>{product.category}</h3>
-        <button onClick={deleteProd}>delete</button>
+        {product.user === localStorage.getItem("id") && (
+          <button onClick={deleteProd}>delete</button>
+        )}
         {getCartCount(id) === 0 ? (
           <button onClick={addProdToCart}>
             add to cart {getCartCount(product._id)}{" "}

@@ -13,6 +13,6 @@ userRouter
   .get(asyncHandler(getAllUsers))
   .post(asyncHandler(registerUser));
 
-userRouter.route("/login").post(asyncHandler(login));
+userRouter.route("/login").post(login);
 
 export default userRouter;

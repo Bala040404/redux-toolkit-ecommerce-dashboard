@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { fetchProducts, appendProduct } from "../../slices/ProductSlice";
 import { useDispatch, useSelector } from "react-redux";
 import "./productform.css";
@@ -7,6 +7,12 @@ import { useNavigate } from "react-router-dom";
 
 function Productform() {
   const nav = useNavigate();
+  const redirect = () => {
+    if (!localStorage.getItem("user")) {
+      nav("/");
+    }
+  };
+  useEffect(redirect, []);
   const [product, setProduct] = useState({
     name: "",
     category: "",

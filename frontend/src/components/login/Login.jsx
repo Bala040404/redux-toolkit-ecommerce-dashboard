@@ -1,15 +1,12 @@
 import React from "react";
 import "./Login.css";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../../slices/UserSlice";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [user, setUser] = useState({ email: "", password: "" });
-  const use = useSelector((store) => {
-    return store.user.user;
-  });
 
   const nav = useNavigate();
 
