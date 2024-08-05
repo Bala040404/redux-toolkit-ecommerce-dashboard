@@ -30,8 +30,6 @@ const userslice = createSlice({
       state.user = action.payload.accessToken;
       localStorage.setItem("accesstoken", action.payload.accessToken);
       localStorage.setItem("id", action.payload.id);
-
-      console.log(action.payload);
     });
 
     builder.addCase(register.fulfilled, (state, action) => {

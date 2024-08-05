@@ -20,6 +20,7 @@ async function addProduct(req, res) {
 
   const newProduct = new Product({ name, price, category, image, user });
   const response = await newProduct.save();
+  console.log(response);
   fs.unlinkSync(path);
   res.status(200).json(new ApiResponse(response, "product added", 200));
 }

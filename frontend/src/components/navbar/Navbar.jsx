@@ -7,6 +7,9 @@ function Navbar() {
     useSelector((store) => {
       return store.user.user;
     }) !== "";
+
+  //need to fix this by using accestoken from local storage
+  //const isAuthenticated = localStorage.getItem("accesstoken") !== null;
   return (
     <nav className="navbar">
       <img

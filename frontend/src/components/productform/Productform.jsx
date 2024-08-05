@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 function Productform() {
   const nav = useNavigate();
   const redirect = () => {
-    if (!localStorage.getItem("user")) {
+    if (!localStorage.getItem("id")) {
+      console.log(localStorage.getItem("id"));
       nav("/");
     }
   };
@@ -19,9 +20,7 @@ function Productform() {
     price: "",
     image: null,
   });
-  const user = useSelector((store) => {
-    return store.user.user;
-  });
+
   const dispatch = useDispatch();
 
   async function addproduct(e) {
@@ -31,7 +30,7 @@ function Productform() {
     f.append("category", product.category);
     f.append("price", product.price);
     f.append("image", product.image);
-    f.append("user", user._id);
+    f.append("user", localStorage.getItem("id"));
 
     await dispatch(appendProduct(f));
     nav("/");
@@ -40,7 +39,7 @@ function Productform() {
   return (
     <div className="productform">
       <form className="form">
-        <div>
+        <div className="inputsection">
           <label htmlFor="name">Enter the name of the product</label>
           <input
             type="text"
@@ -53,7 +52,7 @@ function Productform() {
           />
         </div>
 
-        <div>
+        <div className="inputsection">
           <label htmlFor="category">Enter the category of the product</label>
           <input
             type="text"
@@ -66,7 +65,7 @@ function Productform() {
           />
         </div>
 
-        <div>
+        <div className="inputsection">
           <label htmlFor="image">Enter the image of the product</label>
           <input
             type="file"
@@ -78,7 +77,7 @@ function Productform() {
           />
         </div>
 
-        <div>
+        <div className="inputsection">
           <label htmlFor="price">Enter the price of the product</label>
           <input
             type="number"
@@ -91,11 +90,12 @@ function Productform() {
           />
         </div>
         <button
+          className="productbutton"
           onClick={(e) => {
             addproduct(e);
           }}
         >
-          addproduct
+          Addproduct
         </button>
       </form>
     </div>

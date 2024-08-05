@@ -15,6 +15,7 @@ export const fetchProducts = createAsyncThunk(
 export const appendProduct = createAsyncThunk(
   "products/appendProduct",
   async (payload) => {
+    console.log(payload);
     const res = await axios.post("/api/product", payload, {
       headers: {
         "Content-Type": "multipart/form-data",

@@ -12,39 +12,44 @@ function Login() {
 
   const dispatch = useDispatch();
   return (
-    <div>
-      <h1>log in</h1>
+    <div className="login">
+      <h1>Login</h1>
 
       <div className="loginform">
-        <label htmlFor="email">Enter the email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={user.email}
-          onChange={(e) => {
-            setUser({ ...user, [e.target.name]: e.target.value });
-          }}
-        ></input>
+        <div className="inputsection">
+          <label htmlFor="email">Enter the email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={user.email}
+            onChange={(e) => {
+              setUser({ ...user, [e.target.name]: e.target.value });
+            }}
+          ></input>
+        </div>
 
-        <label htmlFor="password">Enter the password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={user.password}
-          onChange={(e) => {
-            setUser({ ...user, [e.target.name]: e.target.value });
-          }}
-        ></input>
+        <div className="inputsection">
+          <label htmlFor="password">Enter the password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={user.password}
+            onChange={(e) => {
+              setUser({ ...user, [e.target.name]: e.target.value });
+            }}
+          ></input>
+        </div>
 
         <button
+          className="loginbutton"
           onClick={() => {
             dispatch(login(user));
             nav("/");
           }}
         >
-          login
+          Login
         </button>
       </div>
     </div>
