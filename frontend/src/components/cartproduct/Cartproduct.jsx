@@ -20,6 +20,7 @@ function Cartproduct({ image, name, category, price, id, count, prod }) {
 
       <div className="cartCount">
         <button
+          className="cartProdbutton"
           onClick={() => {
             removeProductFromcart(prod);
           }}
@@ -28,6 +29,7 @@ function Cartproduct({ image, name, category, price, id, count, prod }) {
         </button>
         <h3>{count}</h3>
         <button
+          className="cartProdbutton"
           onClick={() => {
             addProductTocart(prod);
           }}

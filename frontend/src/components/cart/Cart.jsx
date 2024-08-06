@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Cartproduct from "../cartproduct/Cartproduct";
+import "./cart.css";
 function Cart() {
   const prods = useSelector((store) => {
     return store.cart.cartItems;
@@ -28,11 +29,13 @@ function Cart() {
     );
   });
   return (
-    <div>
-      <h1>
-        The number of products in the cart is {count} and the cost is {total}{" "}
-      </h1>
-      <div>{cartProducts}</div>
+    <div className="cartpage">
+      <div className="cartinfo">
+        <h1>Products &nbsp; {count}</h1>
+        <h1>Cost &nbsp; {total}</h1>
+      </div>
+
+      <div className="cartproducts">{cartProducts}</div>
     </div>
   );
 }

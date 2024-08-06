@@ -1,13 +1,15 @@
 .product{
-    height: 300px;
+    height: 350px;
     width: 270px;
-    border: 2px solid white;
+    border: 2px solid bisque;
+    margin-top: 15px;
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     transition: 0.5s;
+    border-radius: 5px;
 }
 
 .link{
@@ -17,6 +19,7 @@
 .productimage{
     height: 220px;
     width: 250px;
+    border-radius: 2px;
 
 }
 

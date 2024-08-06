@@ -18,6 +18,7 @@ function Navbar() {
       ></img>
       <h1 className="brand">Armoury</h1>
       <NavLink className="lnks" to="/">
+        <i className="fa-solid fa-house"></i>
         Home
       </NavLink>
 
